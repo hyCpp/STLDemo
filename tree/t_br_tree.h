@@ -8,6 +8,7 @@
 #include "t_stl_func.h"
 #include <memory>
 
+#include <string>
 using namespace STL;
 typedef bool __rb_tree_color_type;
 const __rb_tree_color_type __rb_tree_red = false;

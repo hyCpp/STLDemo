@@ -3,11 +3,12 @@
 
 #include <memory>
 
-struct input_iterator_tag {};
-struct output_iterator_tag {};
-struct forward_iterator_tag : public input_iterator_tag {};
-struct bidirectional_iterator_tag : public forward_iterator_tag {};
-struct random_access_iterator_tag : public bidirectional_iterator_tag {};
+struct input_iterator_tag {}; //只能一次次向前读取元素，一次只能读取一个元素　支持* -> ++ == != ()
+struct output_iterator_tag {}; //将元素写入只能逐个元素赋值，支持* ++ 和复制
+struct forward_iterator_tag : public input_iterator_tag {}; // input 和output组合
+struct bidirectional_iterator_tag : public forward_iterator_tag {}; // 增加支持反向遍历 支持-- eg: list set multiset map multimap
+struct random_access_iterator_tag : public bidirectional_iterator_tag {}; // 增加随机访问 支持[] > < += eg: vector deque string ,ps:vector和string的迭代器是指针而不是对象
+//stack quque priortiy_queue不支持迭代器
 
 template<typename T, typename distance>
 struct input_iterator

@@ -73,13 +73,13 @@ struct __list_iter : public iterator<forward_iterator_tag, T>
         return &(operator*());
     }
 
-    self& operator ++ ()
+    self& operator ++ () // Front eg:++i
     {
         node = static_cast<link_type>((*node).next);
         return *this;
     }
 
-    self operator ++ (int)
+    self operator ++ (int) // Front eg:i++
     {
         self tmp = *this;
         ++*this;

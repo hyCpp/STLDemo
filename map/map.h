@@ -16,7 +16,7 @@ public:
     typedef Compare                 key_compare;
 
     // define functor, For comparison of elements
-    class value_compare : public std::binary_function<value_type, value_type, bool>
+    class value_compare : public binary_function<value_type, value_type, bool>
     {
         friend class map<Key, Value, Compare, Alloc>;
     protected:
@@ -34,7 +34,7 @@ public:
     };
 
 private:
-    typedef rb_tree<key_type, value_type, std::_Select1st<value_type>, key_compare, Alloc> rep_type;
+    typedef rb_tree<key_type, value_type, select1st<value_type>, key_compare, Alloc> rep_type;
     rep_type    t;
 
 public:

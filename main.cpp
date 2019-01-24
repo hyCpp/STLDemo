@@ -14,14 +14,9 @@
 #include "deque.h"
 #include <stdio.h>
 #include <math.h>
+#include <heap/heap.h>
 
-template<typename inputIterator, typename T>
-inputIterator find(inputIterator first, inputIterator last, const T& value) {
-    while (first != last && *first != value) {
-        ++first;
-    }
-    return first;
-}
+
 
 int test1(int t)
 {
@@ -268,9 +263,6 @@ void treeTest()
         brtite = __rb_tree_base_iterator(iter);
         std::cout <<*iter<<"("<<brtite.node->color<<")"<<std::endl;
     }
-
-    std::cout<<*(itree.find(12))<<std::endl;
-    std::cout<<*(itree.end())<<std::endl;
 
     itree.clear();
     std::cout <<"br_tree size : "<<itree.size()<<std::endl;
@@ -595,6 +587,49 @@ void dequeTest()
     printf("deque size %d\n", de.size());
 }
 
+void heapTest()
+{
+    int arr[10] = {68, 31, 65, 21, 24, 32, 26, 19, 16, 13};
+    vector<int> test(arr, arr + 10);
+
+    for (int i : test) {
+        std::cout<< i << ",";
+    }
+
+    std::cout<<std::endl;
+    test.push_back(50);
+    push_heap(test.begin(), test.end());
+    for (int i : test) {
+        std::cout<< i <<",";
+    }
+    std::cout<<std::endl;
+    pop_heap(test.begin(), test.end());
+
+    test.pop_back();
+    for (int i : test) {
+        std::cout<< i <<",";
+    }
+    std::cout<<std::endl;
+
+    sort_heap(test.begin(), test.end());
+    for (int i : test) {
+        std::cout<< i <<",";
+    }
+    std::cout<<std::endl;
+}
+
+#include <linux/mempolicy.h>
+
+class A
+{
+public:
+    A():a(nullptr){}
+    void test(){
+        std::cout<<"test"<<std::endl;
+    }
+    A *a;
+};
+
 int main()
 {
 
@@ -610,13 +645,22 @@ int main()
     //vectorTest2();
 //    treeTest();
 //    setTest();
-    //mapTest();
-    //hashtableTest();
+//    mapTest();
+//    hashtableTest();
     //vectorTest();
 //    GraphMtxTest();
 //    GraphMtxDFS();
 //    GraphInkDFS();
 //    GraphInkBFS();
 //    dequeTest();
+//    heapTest();
+
+//    std::vector<int , allocator<int> > vec = {1, 2, 3, 4, 5};
+
+//    STL::for_each(vec.begin(), vec.end(), display<int>());
+
+
+//    STL::for_each(vec.begin(), vec.end(), display<int>());
+
 }
 

@@ -7,7 +7,8 @@ TARGET = STL
 QMAKE_CXXFLAGS += -std=c++0x
 
 SOURCES *= \
-    ./main.cpp
+    ./main.cpp \
+    test.cpp
 
 HEADERS *= \
     ./list/list.h \
@@ -30,8 +31,10 @@ HEADERS *= \
     ./Graph/GraphMtx.h \
     ./tree/b_tree.h \
     ./tree/t_br_tree.h \
-    deque/deque.h \
-    queue/queue.h
+    ./deque/deque.h \
+    ./queue/queue.h \
+    ./heap/heap.h \
+    stack/stack.h
 
 PATHS *= \
     . \
@@ -44,6 +47,7 @@ PATHS *= \
     ./Graph \
     ./hashtable \
     ./deque \
+    ./heap \
 
 DEPENDPATH *= $$PATHS
 

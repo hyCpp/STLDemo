@@ -4,6 +4,7 @@
 #include "t_iterator.h"
 #include "t_traits.h"
 #include "stdio.h"
+#include "heap.h"
 #include <iostream>
 
 namespace STL {
@@ -55,6 +56,16 @@ inline bool equal(InputIterator first1, InputIterator last1, InputIterator2 firs
     }
     return true;
 }
+
+template<typename InputIterator, typename T>
+inline InputIterator find(InputIterator first, InputIterator last, const T& value)
+{
+    while (first != last && *first != value) {
+        ++first;
+    }
+    return first;
+}
+
 
 template<typename T>
 inline const T& max(const T& a, const T& b)
@@ -291,14 +302,14 @@ RandomAccessIterator __unguarded_partition(RandomAccessIterator first, RandomAcc
 template <typename RandomAccessIterator, typename T>
 void __partial_sort(RandomAccessIterator first, RandomAccessIterator middle, RandomAccessIterator last, T*)
 {
-//    make_heap(first, middle);
+    make_heap(first, middle);
     for (RandomAccessIterator i = middle; i < last; ++i) {
         if (*i < *first) {
-//            __pop_heap(first, middle, i, T(*i), distance_type(first));
+            __pop_heap(first, middle, i, T(*i), distance_type(first));
         }
     }
 
-//    sort_heap(first, middle);
+    sort_heap(first, middle);
 }
 
 template <typename RandomAccessIterator>

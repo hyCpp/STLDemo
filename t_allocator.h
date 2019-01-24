@@ -6,6 +6,7 @@
 #include <iostream>
 #include <climits>
 #include <memory>
+#include "t_algorithm.h"
 
 #if 0
 #   include <new>
@@ -70,9 +71,16 @@ public:
         return ::allocate((difference_type)n, (pointer)0);
     }
 
-    static void deallocate(void* p)
+    static void deallocate(pointer p)
     {
         ::deallocate(p);
+    }
+
+    static void deallocate(pointer p, size_type n)
+    {
+        if (0 != n) {
+            ::deallocate(p);
+        }
     }
 
     pointer address(reference r)
@@ -89,6 +97,11 @@ public:
     {
         return size_t(-1) / sizeof(T);
     }
+
+    size_type init_page_size() {
+        return STL::max(size_type(1), size_type(4096 / sizeof(T)));
+    }
+
 };
 
 template<typename T, class Alloc>

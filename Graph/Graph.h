@@ -58,7 +58,16 @@ public:
     //删除边（v1,v2）
     virtual bool removeEdge(int v1,int v2) = 0;
     virtual int getVertexPos(T vertex) = 0;
+
+    /**
+     * @brief DFS : depth-first-search
+     * 顾名思义广度搜索 : 找到某节点相邻的一个节点，然后从该节点再找下去，直到为空为止，在返回某节点，在在相邻的另外一节点找下去
+     */
     virtual void DFS() = 0;
+    /**
+     * @brief BFS : breadth-first-search
+     * 顾名思义广度搜索 : 找到节点相邻的所有节点，然后找相邻的节点的所有相邻节点，一次搜索下去
+     */
     virtual void BFS() = 0;
     virtual void inputGraph() = 0;
     virtual void outputGraph() = 0;
